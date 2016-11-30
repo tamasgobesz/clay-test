@@ -1,0 +1,32 @@
+﻿<md-content class="md-padding" layout-xs="column" layout="row" ng-init="vm.getDoors()" flex>
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Doors</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+            <div class="text-danger" ng-show="vm.errorMessage">{{ vm.errorMessage }}</div>
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>Door Name</th>
+                    <th>Door Status</th>
+                    <th colspan="3">Action</th>
+                </tr>
+                <tr ng-repeat="door in vm.doors">
+                    <td>{{ door.name }}</td>
+                    <td>{{ door.isOpen ? "Open" : "Closed" }}</td>
+                    <td>
+                        <md-button class="md-primary" ng-hide="door.isOpen" ng-click="vm.openDoor(door.id)">Kick Open</md-button>
+                        <md-button class="md-primary" ng-hide="!door.isOpen" ng-click="vm.closeDoor(door.id)">Close</md-button>
+                    </td>
+                    <td><md-button ng-href="#/doors/{{ door.id }}" class="btn btn-sm btn-primary">Edit</md-button></td>
+                    <td><md-button ng-href="#/properties/{{ vm.propertyId }}/doors/{{ door.id }}/events" class="btn btn-sm btn-primary">Events</md-button></td>
+                </tr>
+            </table>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>Add new door</md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>

@@ -1,0 +1,26 @@
+﻿<md-content class="md-padding" layout-xs="column" layout="row" ng-init="vm.getUsers()" flex>
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Property Users</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+            <div class="text-danger" ng-show="vm.errorMessage">{{ vm.errorMessage }}</div>
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+                <tr ng-repeat="user in vm.users">
+                    <td>{{ user.userName }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            </table>
+
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>Add new user to property</md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>

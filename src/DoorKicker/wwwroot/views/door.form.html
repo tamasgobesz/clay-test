@@ -1,0 +1,18 @@
+﻿<div>
+    <div>
+        <a href="#/" class="btn btn-sm btn-default"><i class="fa fa-angle-left"></i> Back</a>
+    </div>
+    <div class="col-md-3">
+        <form novalidate name="doorForm" ng-submit="vm.addDoor()">
+            <div class="form-group">
+                <label for="name">Door Name</label>
+                <input class="form-control" type="text" id="name" name="name" ng-model="vm.door.name" required ng-minlength="5" />
+                <span ng-show="doorForm.name.$error.required" class="text-warning">Name is required.</span>
+                <span ng-show="doorForm.name.$error.minlength" class="text-warning">Name must be at least five characters.</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-success btn-sm" ng-disabled="doorForm.$invalid" />
+            </div>
+        </form>
+    </div>
+</div>

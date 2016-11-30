@@ -1,0 +1,18 @@
+﻿<md-content class="md-padding" layout-xs="column" layout="row" ng-init="vm.getProperties()" flex>
+    <md-card flex>
+        <md-card-content layout="row" layout-align="space-between">
+            <div class="text-danger" ng-show="vm.errorMessage">{{ vm.errorMessage }}</div>
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <th>Property Name</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                <tr ng-repeat="property in vm.properties">
+                    <td>{{ property.name }}</td>
+                    <td><a ng-href="#/properties/{{ property.id }}/doors" class="btn btn-sm btn-primary">Doors</a></td>
+                    <td><a ng-href="#/properties/{{ property.id }}/users" class="btn btn-sm btn-primary">Users</a></td>
+                </tr>
+            </table>
+        </md-card-content>
+    </md-card>
+</md-content>

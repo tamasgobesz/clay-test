@@ -1,0 +1,23 @@
+<form name="pdc.form" layout="row" layout-align="center" flex>
+<md-dialog ng-cloak flex-gt-sm="50">
+    <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add new door</h2>
+            </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div layout-padding class="md-dialog-content">
+            <div layout="row" layout-xs="column" flex="none">
+                <md-input-container class="md-block" flex>
+                    <label>Property name</label>
+                    <input type="text" ng-model="pdc.property.name" required>
+                </md-input-container>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" flex="none">
+        <md-button ng-click="pdc.submit()" ng-disabled="pdc.form.$invalid">OK</md-button>
+        <md-button ng-click="pdc.cancel()" style="margin-right:20px;">Cancel</md-button>
+    </md-dialog-actions>
+</md-dialog>
+</form>

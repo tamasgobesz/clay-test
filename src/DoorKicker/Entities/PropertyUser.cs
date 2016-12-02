@@ -1,7 +1,7 @@
 ﻿namespace DoorKicker.Entities
 {
     /// <summary>
-    /// This class is only needed beacuse EF Core does not support many to many relationships without an entity class
+    /// This class is only needed because EF Core does not support many to many relationships without an entity class
     /// </summary>
     public class PropertyUser: Entity
     {

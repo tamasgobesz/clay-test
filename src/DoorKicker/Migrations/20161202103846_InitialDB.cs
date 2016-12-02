@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DoorKicker.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class InitialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -235,6 +235,7 @@ namespace DoorKicker.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Autoincrement", true),
+                    Created = table.Column<DateTime>(nullable: false),
                     DoorId = table.Column<int>(nullable: false),
                     DoorId1 = table.Column<int>(nullable: true),
                     Message = table.Column<string>(nullable: true)

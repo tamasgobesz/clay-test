@@ -28,7 +28,7 @@ namespace DoorKicker.Repositories
                     Email = "tom@doorkickers.com"
                 };
 
-                await _userManager.CreateAsync(user, "P@ssw0rd!");
+                await _userManager.CreateAsync(user, "Door01@!");
             }
 
             if (await _userManager.FindByEmailAsync("dick@doorkickers.com") == null)
@@ -39,7 +39,7 @@ namespace DoorKicker.Repositories
                     Email = "dick@doorkickers.com"
                 };
 
-                await _userManager.CreateAsync(user, "P@ssw0rd!");
+                await _userManager.CreateAsync(user, "Door02@!");
             }
 
             if (await _userManager.FindByEmailAsync("harry@doorkickers.com") == null)
@@ -50,7 +50,7 @@ namespace DoorKicker.Repositories
                     Email = "harry@doorkickers.com"
                 };
 
-                await _userManager.CreateAsync(user, "P@ssw0rd!");
+                await _userManager.CreateAsync(user, "Door03@!");
             }
 
             var demoUser = await _userManager.FindByEmailAsync("tom@doorkickers.com");
@@ -96,23 +96,6 @@ namespace DoorKicker.Repositories
                 await _context.SaveChangesAsync();
 
             }
-
-            //if (!_context.UserDoors.Any(x => x.UserId == demoUser.Id))
-            //{
-            //    demoUser.UserDoors.Add(new UserDoor()
-            //    {
-            //        UserId = demoUser.Id,
-            //        DoorId = 1
-            //    });
-
-            //    demoUser.UserDoors.Add(new UserDoor()
-            //    {
-            //        UserId = demoUser.Id,
-            //        DoorId = 2
-            //    });
-
-            //    await _context.SaveChangesAsync();
-            //}
         }
     }
 }

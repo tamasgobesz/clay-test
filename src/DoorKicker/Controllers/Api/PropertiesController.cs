@@ -12,7 +12,6 @@ namespace DoorKicker.Controllers.Api
     public class PropertiesController : Controller
     {
         private IRepository<Property> _propertiesRepository;
-        private IRepository<PropertyUser> _propertyUsersRepository;
         private UserManager<User> _userManager;
 
         public PropertiesController(IRepository<Property> propertiesRepository, UserManager<User> userManager)

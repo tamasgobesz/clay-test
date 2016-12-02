@@ -20,13 +20,12 @@
                         <md-button class="md-primary" ng-hide="door.isOpen" ng-click="vm.openDoor(door.id)">Kick Open</md-button>
                         <md-button class="md-primary" ng-hide="!door.isOpen" ng-click="vm.closeDoor(door.id)">Close</md-button>
                     </td>
-                    <td><md-button ng-href="#/doors/{{ door.id }}" class="btn btn-sm btn-primary">Edit</md-button></td>
                     <td><md-button ng-href="#/properties/{{ vm.propertyId }}/doors/{{ door.id }}/events" class="btn btn-sm btn-primary">Events</md-button></td>
                 </tr>
             </table>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-            <md-button>Add new door</md-button>
+            <md-button ng-click="vm.addDoor()">Add new door</md-button>
         </md-card-actions>
     </md-card>
 </md-content>

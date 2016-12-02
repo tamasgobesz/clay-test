@@ -46,6 +46,8 @@ namespace DoorKicker.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Created");
+
                     b.Property<int>("DoorId");
 
                     b.Property<int?>("DoorId1");
@@ -270,13 +272,13 @@ namespace DoorKicker.Migrations
 
             modelBuilder.Entity("DoorKicker.Entities.Event", b =>
                 {
-                    b.HasOne("DoorKicker.Entities.Door", "Door")
-                        .WithMany()
+                    b.HasOne("DoorKicker.Entities.Door")
+                        .WithMany("Events")
                         .HasForeignKey("DoorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("DoorKicker.Entities.Door")
-                        .WithMany("Events")
+                    b.HasOne("DoorKicker.Entities.Door", "Door")
+                        .WithMany()
                         .HasForeignKey("DoorId1");
                 });
 

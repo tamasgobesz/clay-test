@@ -1,18 +1,29 @@
-﻿<div>
-    <div>
-        <a href="#/" class="btn btn-sm btn-default"><i class="fa fa-angle-left"></i> Back</a>
-    </div>
-    <div class="col-md-3">
-        <form novalidate name="doorForm" ng-submit="vm.addDoor()">
-            <div class="form-group">
-                <label for="name">Door Name</label>
-                <input class="form-control" type="text" id="name" name="name" ng-model="vm.door.name" required ng-minlength="5" />
-                <span ng-show="doorForm.name.$error.required" class="text-warning">Name is required.</span>
-                <span ng-show="doorForm.name.$error.minlength" class="text-warning">Name must be at least five characters.</span>
+﻿<form name="ddc.doorForm" layout="row" layout-align="center" flex>
+<md-dialog class="userDialog" ng-cloak flex-gt-sm="50">
+    <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add new door</h2>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Add" class="btn btn-success btn-sm" ng-disabled="doorForm.$invalid" />
+    </md-toolbar>
+    <md-dialog-content>
+        <div layout-padding class="md-dialog-content">
+            <div layout="row" layout-xs="column" flex="none">
+                <md-input-container class="md-block" flex>
+                    <label>Door name</label>
+                    <input type="text" ng-model="ddc.door.name" required>
+                </md-input-container>
             </div>
-        </form>
-    </div>
-</div>
+            <div layout="row" layout-xs="column" flex="none">
+                <md-input-container class="md-block" flex>
+                    <label>Token</label>
+                    <input type="text" ng-model="ddc.door.token" required>
+                </md-input-container>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" flex="none">
+        <md-button ng-click="ddc.submit()" ng-disabled="ddc.doorForm.$invalid">OK</md-button>
+        <md-button ng-click="ddc.cancel()" style="margin-right:20px;">Cancel</md-button>
+    </md-dialog-actions>
+</md-dialog>
+</form>

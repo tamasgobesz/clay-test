@@ -1,4 +1,4 @@
-﻿<md-content class="md-padding" layout-xs="column" layout="row" ng-init="vm.getUsers()" flex>
+﻿<md-content class="md-padding" layout-xs="column" layout="row" ng-init="vm.getUsersForProperty()" flex>
     <md-card flex>
         <md-card-title>
             <md-card-title-text>
@@ -17,10 +17,9 @@
                     <td>{{ user.email }}</td>
                 </tr>
             </table>
-
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-            <md-button>Add new user to property</md-button>
+            <md-button ng-click="vm.addPropertyUser()">Add new user to property</md-button>
         </md-card-actions>
     </md-card>
 </md-content>

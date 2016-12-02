@@ -55,14 +55,24 @@ namespace DoorKicker.Controllers.Api
             }
         }
 
-        [Route("api/properties/{propertyId}/doors")]
-        [HttpPost]
+        [Authorize]
+        [HttpPost("api/properties/{propertyId}/doors")]
         public IActionResult Create(int propertyId, [FromBody]Door door)
         {
             try
             {
+                var property = _propertyRepository.Get(propertyId);
+
+                if (property == null)
+                    return BadRequest();
+
                 if (door == null)
                     return BadRequest();
+
+                if (_doorRepository.GetAll().Any(d => d.Token.Equals(door.Token)))
+                    return BadRequest();
+
+                door.PropertyId = property.Id;
 
                 _doorRepository.Insert(door);
 
@@ -74,16 +84,7 @@ namespace DoorKicker.Controllers.Api
             }            
         }
 
-        [Route("api/properties/{propertyId}/doors")]
-        [HttpPut("{doorId}")]
-        public IActionResult Update(int propertyId, int doorId, [FromBody]Door door)
-        {
-            if (door == null)
-                return BadRequest();
-
-            return Ok();
-        }
-
+        [Authorize]
         [HttpPost("api/properties/{propertyId}/doors/{doorId}/open")]
         public IActionResult Open(int propertyId, int doorId)
         {
@@ -106,6 +107,7 @@ namespace DoorKicker.Controllers.Api
                     door.IsOpen = true;
                     door.Events.Add(new Event()
                     {
+                        Created = DateTime.UtcNow,
                         DoorId = door.Id,
                         Message = string.Format("{0} just kicked in the door.", User.Identity.Name)
                     });
@@ -115,6 +117,7 @@ namespace DoorKicker.Controllers.Api
 
                 var unauthorizedEvent = new Event()
                 {
+                    Created = DateTime.UtcNow,
                     DoorId = door.Id,
                     Message = "Oh no! Someone you don't know just tried to kick in your door."
                 };
@@ -129,6 +132,7 @@ namespace DoorKicker.Controllers.Api
             }
         }
 
+        [Authorize]
         [HttpPost("api/properties/{propertyId}/doors/{doorId}/close")]
         public IActionResult Close(int doorId)
         {

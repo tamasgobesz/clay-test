@@ -25,24 +25,5 @@
               vm.isBusy = false;
           });
         }
-
-        vm.addDoor = function () {
-
-            vm.isBusy = true;
-            vm.errorMessage = "";
-
-            $http.post("/api/properties", vm.newProperty)
-              .then(function (response) {
-                  // success
-                  vm.trips.push(response.data);
-                  vm.newTrip = {};
-              }, function () {
-                  // failure
-                  vm.errorMessage = "Failed to save new trip";
-              })
-              .finally(function () {
-                  vm.isBusy = false;
-              });
-        };
     }
 })();

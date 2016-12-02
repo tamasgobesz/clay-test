@@ -20,7 +20,9 @@ namespace DoorKicker.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var entity = _dbSet.SingleOrDefault(e => e.Id == id);
+            _dbSet.Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public virtual IQueryable<T> GetAll()

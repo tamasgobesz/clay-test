@@ -1,0 +1,34 @@
+<form name="pudc.form" layout="row" layout-align="center" flex>
+<md-dialog class="userDialog" ng-cloak flex-gt-sm="50">
+    <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add new user to property</h2>
+            </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div layout-padding class="md-dialog-content">
+            <div layout="row" layout-xs="column" flex="none">
+                <md-autocomplete
+                    md-selected-item="pudc.selectedItem"
+                    md-search-text="pudc.searchText"
+                    md-items="item in pudc.getUsers(pudc.searchText)"
+                    md-item-text="item.userName + ' (' + item.email + ')'"
+                    md-min-length="0"
+                    placeholder="Username"
+                    md-autofocus>
+                    <md-item-template>
+                        <span md-highlight-text="pudc.searchText" md-highlight-flags="^i">{{item.userName + ' (' + item.email + ')'}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No username matching "{{pudc.searchText}}" were found.
+                    </md-not-found>
+                </md-autocomplete>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" flex="none">
+        <md-button ng-click="pudc.submit()" ng-disabled="pudc.selectedItem == undefined">OK</md-button>
+        <md-button ng-click="pudc.cancel()" style="margin-right:20px;">Cancel</md-button>
+    </md-dialog-actions>
+</md-dialog>
+</form>

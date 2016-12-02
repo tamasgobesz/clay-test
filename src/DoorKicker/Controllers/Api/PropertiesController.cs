@@ -26,9 +26,8 @@ namespace DoorKicker.Controllers.Api
             
         }
 
-        [Route("api/properties")]
         [Authorize]
-        [HttpGet]
+        [HttpGet("api/properties")]
         public IActionResult Get()
         {
             try

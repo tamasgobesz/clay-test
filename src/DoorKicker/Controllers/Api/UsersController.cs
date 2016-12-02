@@ -80,7 +80,7 @@ namespace DoorKicker.Controllers.Api
 
             
             if (property.PropertyUsers.Any(pu => pu.UserId.Equals(userToAdd.Id)))
-            return Ok();
+                return Ok();
                 
 
             property.PropertyUsers.Add(new PropertyUser(){
